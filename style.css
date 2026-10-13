@@ -1,0 +1,460 @@
+/* ---------- Basic setup ---------- */
+:root {
+    --bg: #e8ede6;
+    --panel: #f6f8f3;
+    --ink: #14262b;
+    --muted: #4f6369;
+    --line: #c5d0c6;
+    --accent: #0e5a5a;
+    --accent-dark: #0a4343;
+    --mark: #f0b429;
+
+    /* one colour per theme */
+    --c-motivation: #2b59c3;
+    --c-success: #2e7d4f;
+    --c-wisdom: #7a4ba0;
+    --c-courage: #c0392b;
+    --c-happiness: #b87400;
+    --c-mine: #14262b;
+
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Karla", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--mark);
+    outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    border-bottom: 1px solid var(--line);
+}
+
+.brand {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.site-header nav {
+    display: flex;
+    gap: 26px;
+}
+
+.site-header nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.site-header nav a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    padding: 90px 7% 80px;
+    max-width: 1100px;
+}
+
+.hero-label {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 4px 14px;
+    border-radius: 999px;
+    color: #fff;
+    background: var(--accent);
+    margin-bottom: 26px;
+}
+
+.hero-quote p {
+    font-family: var(--serif);
+    font-size: clamp(32px, 5.4vw, 64px);
+    line-height: 1.16;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    max-width: 22ch;
+}
+
+.hero-quote footer {
+    margin-top: 22px;
+    font-size: 19px;
+    color: var(--muted);
+}
+
+.hero-quote.swap p,
+.hero-quote.swap footer {
+    animation: swap-in 0.45s ease;
+}
+
+@keyframes swap-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 40px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 2px solid var(--accent);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-solid {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-solid:hover {
+    background: var(--accent-dark);
+}
+
+.btn-line {
+    background: transparent;
+    color: var(--accent);
+}
+
+.btn-line:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* ---------- Library layout ---------- */
+.library {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 50px;
+    padding: 60px 7% 80px;
+    border-top: 1px solid var(--line);
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+}
+
+.side-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.theme-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.theme-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: transparent;
+    border: none;
+    border-left: 5px solid var(--dot, var(--line));
+    border-radius: 0 6px 6px 0;
+    font-family: var(--sans);
+    font-size: 17px;
+    color: var(--ink);
+    text-align: left;
+    cursor: pointer;
+}
+
+.theme-btn:hover {
+    background: var(--panel);
+}
+
+.theme-btn[aria-pressed="true"] {
+    background: var(--ink);
+    color: #fff;
+    font-weight: 700;
+}
+
+.theme-count {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.search-label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+input[type="search"],
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 16px;
+    padding: 10px 12px;
+    border: 2px solid var(--line);
+    border-radius: 6px;
+    background: var(--panel);
+    color: var(--ink);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+/* ---------- Quote list ---------- */
+.results-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+}
+
+.results-head h2 {
+    font-family: var(--serif);
+    font-size: 32px;
+}
+
+.results-head p {
+    color: var(--muted);
+}
+
+.quote-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 30px;
+    padding: 28px 0 28px 22px;
+    border-bottom: 1px solid var(--line);
+    border-left: 6px solid var(--tone, var(--ink));
+    margin-left: -22px;
+}
+
+.quote-text {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.6vw, 29px);
+    line-height: 1.3;
+    max-width: 32ch;
+}
+
+.quote-meta {
+    grid-column: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    color: var(--muted);
+}
+
+.quote-meta .tag {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tone, var(--ink));
+}
+
+.quote-tools {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-self: start;
+}
+
+.tool-btn {
+    min-width: 92px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 7px 12px;
+    background: var(--panel);
+    color: var(--ink);
+    border: 2px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.tool-btn:hover {
+    border-color: var(--accent);
+}
+
+.tool-btn[aria-pressed="true"] {
+    background: var(--mark);
+    border-color: var(--mark);
+}
+
+.empty {
+    padding: 50px 0;
+    color: var(--muted);
+    font-size: 19px;
+}
+
+/* ---------- Add quote ---------- */
+.add-section {
+    padding: 60px 7% 70px;
+    background: var(--panel);
+    border-top: 1px solid var(--line);
+}
+
+.add-section h2 {
+    font-family: var(--serif);
+    font-size: 32px;
+}
+
+.add-note {
+    color: var(--muted);
+    margin: 6px 0 26px;
+}
+
+.add-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    max-width: 760px;
+}
+
+.field label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.field.wide {
+    grid-column: 1 / -1;
+}
+
+.add-form .btn {
+    grid-column: 1 / -1;
+    justify-self: start;
+}
+
+/* ---------- Footer & toast ---------- */
+.site-footer {
+    padding: 28px 7%;
+    text-align: center;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 26px;
+    transform: translate(-50%, 30px);
+    background: var(--ink);
+    color: #fff;
+    padding: 11px 22px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 800px) {
+    .site-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero {
+        padding: 60px 7% 55px;
+    }
+
+    .library {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .sidebar {
+        position: static;
+    }
+
+    .theme-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .theme-btn {
+        width: auto;
+        border-left: none;
+        border: 2px solid var(--dot, var(--line));
+        border-radius: 999px;
+        padding: 6px 14px;
+    }
+
+    .quote-item {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-tools {
+        grid-column: 1;
+        grid-row: auto;
+        flex-direction: row;
+    }
+
+    .add-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-quote.swap p,
+    .hero-quote.swap footer { animation: none; }
+    .toast { transition: none; }
+}

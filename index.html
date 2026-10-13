@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotebook | Favorite quotes by theme</title>
+
+    <!-- Google Fonts (optional: if there is no internet, Georgia / system fonts are used) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="#top" class="brand">Quotebook</a>
+        <nav aria-label="Main">
+            <a href="#library">Library</a>
+            <a href="#add">Add a quote</a>
+        </nav>
+    </header>
+
+    <!-- HERO: one big quote that changes on click -->
+    <section class="hero" id="top">
+        <p class="hero-label" id="heroTheme">Courage</p>
+        <blockquote class="hero-quote" id="heroQuote" aria-live="polite">
+            <p id="heroText">Quotes loading...</p>
+            <footer id="heroAuthor"></footer>
+        </blockquote>
+        <div class="hero-actions">
+            <button class="btn btn-solid" id="randomBtn" type="button">Show another quote</button>
+            <a class="btn btn-line" href="#library">Browse by theme</a>
+        </div>
+    </section>
+
+    <!-- LIBRARY: themes on the left, quotes on the right -->
+    <main class="library" id="library">
+
+        <aside class="sidebar">
+            <h2 class="side-title">Themes</h2>
+            <ul class="theme-list" id="themeList"></ul>
+
+            <label class="search-label" for="searchInput">Search</label>
+            <input type="search" id="searchInput" placeholder="Word or author">
+        </aside>
+
+        <section class="results" aria-labelledby="resultsTitle">
+            <div class="results-head">
+                <h2 id="resultsTitle">All quotes</h2>
+                <p id="resultsCount" aria-live="polite"></p>
+            </div>
+            <div id="quoteList" class="quote-list"></div>
+        </section>
+    </main>
+
+    <!-- ADD YOUR OWN QUOTE -->
+    <section class="add-section" id="add">
+        <h2>Add your own favorite</h2>
+        <p class="add-note">Saved in this browser, so your quote is still here next time.</p>
+
+        <form id="addForm" class="add-form" autocomplete="off">
+            <div class="field wide">
+                <label for="newText">Quote</label>
+                <textarea id="newText" rows="3" required placeholder="Type the quote here"></textarea>
+            </div>
+            <div class="field">
+                <label for="newAuthor">Author</label>
+                <input type="text" id="newAuthor" required placeholder="Who said it?">
+            </div>
+            <div class="field">
+                <label for="newCategory">Theme</label>
+                <select id="newCategory" required></select>
+            </div>
+            <button type="submit" class="btn btn-solid">Add quote</button>
+        </form>
+    </section>
+
+    <footer class="site-footer">
+        <p>Quotebook &copy; 2026. Vocational Practice project.</p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
